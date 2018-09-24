@@ -7,17 +7,21 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSCmdletProductivityTools
+namespace ProductivityTools.PSCmdlet
 {
-    public abstract class PSCmdletPT
+    public abstract class PSCmdletPT: System.Management.Automation.PSCmdlet
     {
+        const string HelpText = "Shows this menu";
+
         [Parameter]
-        [Description("Shows this menu")]
+        [Description(HelpText)]
         public SwitchParameter Help { get; set; }
 
-        private List<PSBaseCommandPT> CommandList = new List<PSBaseCommandPT>();
+        private List<PSCommandPT> CommandList = new List<PSCommandPT>();
 
-        protected void AddCommand(PSBaseCommandPT command)
+        public Action<string> WriteOutput { get; set; } = (s) => Console.WriteLine(s);
+
+        protected void AddCommand(PSCommandPT command)
         {
             this.CommandList.Add(command);
         }
@@ -48,7 +52,7 @@ namespace PSCmdletProductivityTools
             var s = this.GetType();
             var description = s.Description();
             string line = $"[{s.Name} - {description}]";
-            Console.WriteLine(line);
+            WriteOutput(line);
         }
 
         private void PrintPropertiesDescription()
@@ -60,7 +64,7 @@ namespace PSCmdletProductivityTools
                 {
                     string description = this.GetType().PropertyDescription(item.Name);
                     string line = $"{item.Name} - {description}";
-                    Console.WriteLine(line);
+                    WriteOutput(line);
                 }
             }
         }

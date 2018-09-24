@@ -4,30 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSCmdletProductivityTools
+namespace ProductivityTools.PSCmdlet
 {
-    public abstract class PSBaseCommandPT
+    public abstract class PSCommandPT
     {
         public abstract void ProcessRecord();
     }
 
-    public abstract class PSBaseCommandPT<CmdletType> : PSBaseCommandPT
+    public abstract class PSCommandPT<CmdletType> : PSCommandPT where CmdletType : PSCmdletPT
     {
         protected CmdletType Cmdlet;
 
-        public PSBaseCommandPT(CmdletType cmdletType)
+        public PSCommandPT(CmdletType cmdletType)
         {
             this.Cmdlet = cmdletType;
+        }
+
+        protected void WriteOutput(string s)
+        {
+            this.Cmdlet.WriteOutput(s);
         }
 
         protected abstract bool Condition { get; }
 
         protected abstract void Invoke();
-
-        protected void InvokeCall(Action a)
-        {
-            a();
-        }
 
         public override void ProcessRecord()
         {
@@ -37,5 +37,4 @@ namespace PSCmdletProductivityTools
             }
         }
     }
-
 }

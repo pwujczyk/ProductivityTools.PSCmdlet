@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ProductivityTools.PSCmdlet</id>
+    <version>0.0.3</version>
+    <authors>Pawel Wujczyk</authors>
+    <owners>Pawel Wujczyk</owners>
+    <projectUrl>http://www.productivitytools.tech/pscmdlet/</projectUrl>
+    <description>Base library for the powershell module. It introduces Command term which makes cmdlet modular</description>
+    <releaseNotes>First release</releaseNotes>
+    <tags>Powershell Cmdlet Module</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>

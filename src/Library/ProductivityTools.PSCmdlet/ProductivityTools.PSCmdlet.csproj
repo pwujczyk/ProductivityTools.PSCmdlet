@@ -7,8 +7,8 @@
     <ProjectGuid>{CCD8F8DD-0A5E-48ED-A9E1-66D9E07D8919}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PSCmdletProductivityTools</RootNamespace>
-    <AssemblyName>PSCmdletProductivityTools</AssemblyName>
+    <RootNamespace>ProductivityTools.PSCmdlet</RootNamespace>
+    <AssemblyName>ProductivityTools.PSCmdlet</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,11 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PSBaseCommandPT.cs" />
     <Compile Include="PSCmdletPT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSCommandPT.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="NugetMetadata.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
