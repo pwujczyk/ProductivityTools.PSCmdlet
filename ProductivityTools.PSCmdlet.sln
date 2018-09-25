@@ -9,12 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTools.PSCmdlet"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{73CD4AFB-8446-41EA-A25F-758D70FD99E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTools.PSCmdlet.Tests", "ProductivityTools.PSCmdlet.Tests\ProductivityTools.PSCmdlet.Tests.csproj", "{E7227CC2-AC99-4A2D-9F00-8494D68FC779}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{522F43A8-56CF-4F97-B07F-C6AC457237D4}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NugetMetadata.nuspec = .nuget\NugetMetadata.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTools.PSCmdlet.Tests", "src\Tests\ProductivityTools.PSCmdlet.Tests\ProductivityTools.PSCmdlet.Tests.csproj", "{E7227CC2-AC99-4A2D-9F00-8494D68FC779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
