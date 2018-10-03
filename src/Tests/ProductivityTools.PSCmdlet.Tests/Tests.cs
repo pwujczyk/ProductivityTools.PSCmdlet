@@ -41,13 +41,13 @@ namespace ProductivityTools.PSCmdlet.Tests
         public void WriteHelp()
         {
             string helpText = string.Empty;
-            Action<string> writetext = (s) => helpText = s;
+            Action<string> writetext = (s) => helpText += s;
             WritingCmdlet commandWritesText = new WritingCmdlet();
             commandWritesText.WriteOutput = writetext;
 
             commandWritesText.Help = true;
             commandWritesText.DebugSomeCommand();
-            Assert.AreEqual(helpText, "Help - Shows this menu");
+            Assert.AreEqual(helpText, "[WritingCmdlet - ]WriteText - CustomHelpMessageHelp - ");
         }
     }
 }

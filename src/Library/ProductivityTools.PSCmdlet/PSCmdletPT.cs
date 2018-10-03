@@ -62,7 +62,10 @@ namespace ProductivityTools.PSCmdlet
             {
                 if (item.CustomAttributes.Any(x => x.AttributeType.Name == "ParameterAttribute"))
                 {
-                    string description = this.GetType().PropertyDescription(item.Name);
+                    ParameterAttribute parameter = (ParameterAttribute)item.GetCustomAttributes(typeof(ParameterAttribute), true).Single();
+                    
+                    //string description = this.GetType().GetCustomAttributes( .PropertyDescription(item.Name);
+                    string description = parameter.HelpMessage;
                     string line = $"{item.Name} - {description}";
                     WriteOutput(line);
                 }
