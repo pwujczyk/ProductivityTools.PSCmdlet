@@ -1,11 +1,11 @@
-﻿using DescriptionLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using DescriptionLibrary;
 
 namespace ProductivityTools.PSCmdlet
 {
@@ -13,8 +13,7 @@ namespace ProductivityTools.PSCmdlet
     {
         const string HelpText = "Shows this menu";
 
-        [Parameter]
-        [Description(HelpText)]
+        [Parameter(HelpMessage =HelpText)]
         public SwitchParameter Help { get; set; }
 
         private List<PSCommandPT> CommandList = new List<PSCommandPT>();
@@ -63,8 +62,6 @@ namespace ProductivityTools.PSCmdlet
                 if (item.CustomAttributes.Any(x => x.AttributeType.Name == "ParameterAttribute"))
                 {
                     ParameterAttribute parameter = (ParameterAttribute)item.GetCustomAttributes(typeof(ParameterAttribute), true).Single();
-                    
-                    //string description = this.GetType().GetCustomAttributes( .PropertyDescription(item.Name);
                     string description = parameter.HelpMessage;
                     string line = $"{item.Name} - {description}";
                     WriteOutput(line);
