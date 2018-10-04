@@ -39,7 +39,7 @@ namespace ProductivityTools.PSCmdlet.Tests
 
         public void DebugSomeCommand()
         {
-            this.ProcessRecord();
+                this.ProcessRecord();
         }       
     }
 }

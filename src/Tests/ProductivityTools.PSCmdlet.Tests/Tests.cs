@@ -47,7 +47,7 @@ namespace ProductivityTools.PSCmdlet.Tests
 
             commandWritesText.Help = true;
             commandWritesText.DebugSomeCommand();
-            Assert.AreEqual(helpText, "[WritingCmdlet - ]WriteText - CustomHelpMessageHelp - ");
+            Assert.AreEqual(helpText, "WritingCmdletWriteText - CustomHelpMessageHelp - Shows this menu");
         }
     }
 }
