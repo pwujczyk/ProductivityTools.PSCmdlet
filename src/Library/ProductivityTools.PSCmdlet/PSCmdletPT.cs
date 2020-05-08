@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using DescriptionLibrary;
+using ProductivityTools.DescriptionValue;
 
 namespace ProductivityTools.PSCmdlet
 {
-    public abstract class PSCmdletPT: System.Management.Automation.PSCmdlet
+
+    public abstract class PSCmdletPT : System.Management.Automation.PSCmdlet
     {
         const string HelpText = "Shows this menu";
 
-        [Parameter(HelpMessage =HelpText)]
+        [Parameter(HelpMessage = HelpText)]
         public SwitchParameter Help { get; set; }
 
         private List<PSCommandPT> CommandList = new List<PSCommandPT>();
@@ -50,11 +48,11 @@ namespace ProductivityTools.PSCmdlet
         {
             var s = this.GetType();
             string line = s.Name;
-
-            var description = s.Description();
-            if(!string.IsNullOrEmpty(description))
+            
+            var description = s.GetDescription();
+            if (!string.IsNullOrEmpty(description))
             {
-                line+= $"[- {description}]";
+                line += $"[- {description}]";
             }
             WriteOutput(line);
         }

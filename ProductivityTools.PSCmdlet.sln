@@ -1,18 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{0202E669-25D5-4728-BB16-CC93F4FC4579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTools.PSCmdlet", "src\Library\ProductivityTools.PSCmdlet\ProductivityTools.PSCmdlet.csproj", "{CCD8F8DD-0A5E-48ED-A9E1-66D9E07D8919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductivityTools.PSCmdlet", "src\Library\ProductivityTools.PSCmdlet\ProductivityTools.PSCmdlet.csproj", "{CCD8F8DD-0A5E-48ED-A9E1-66D9E07D8919}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{73CD4AFB-8446-41EA-A25F-758D70FD99E5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{522F43A8-56CF-4F97-B07F-C6AC457237D4}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NugetMetadata.nuspec = .nuget\NugetMetadata.nuspec
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTools.PSCmdlet.Tests", "src\Tests\ProductivityTools.PSCmdlet.Tests\ProductivityTools.PSCmdlet.Tests.csproj", "{E7227CC2-AC99-4A2D-9F00-8494D68FC779}"
 EndProject
