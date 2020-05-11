@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Pawel Wujczyk</Authors>
+    <Company />
+    <Product />
+    <Description>Base library for the powershell module. It introduces Command object which makes cmdlet modular.</Description>
+    <Copyright />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://productivitytools.tech/pscmdlet/</PackageProjectUrl>
+    <PackageIcon>ProductivityTools_blue_85px_1.png</PackageIcon>
+    <RepositoryUrl>https://github.com/pwujczyk/ProductivityTools.PSCmdlet</RepositoryUrl>
+    <PackageTags>Powershell Cmdlet Module</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
@@ -17,5 +27,12 @@
     <Reference Include="System.Management.Automation">
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Images\Nuget\ProductivityTools_blue_85px_1.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>

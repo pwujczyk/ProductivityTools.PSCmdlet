@@ -47,9 +47,9 @@ namespace ProductivityTools.PSCmdlet
         private void MethodDescription()
         {
             var s = this.GetType();
-            string line = s.Name;
-            
             var description = s.GetDescription();
+
+            string line = s.Name;
             if (!string.IsNullOrEmpty(description))
             {
                 line += $"[- {description}]";
