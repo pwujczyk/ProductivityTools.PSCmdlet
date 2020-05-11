@@ -10,9 +10,10 @@
     </a>
 </p>
 
-# ProductivityTools.PSCmdlet
+# PSCmdlet
 
 It is base class for PowerShell Cmdlets. It provides structure of the commands and helps to write modular and clean.
+<!--more-->
 
 After adding reference to ProductivityTools.PSCmdlet new class should be crated which will deliver from PSCmdlet.PSCmdletPT.
 
