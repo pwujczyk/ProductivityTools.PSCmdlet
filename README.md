@@ -41,11 +41,11 @@ public class TimeTrackingCmdlet :PSCmdlet.PSCmdletPT
 
 Generate ProcessRecord override. This method called when we are invoking the Cmdlet
 
-![Generate override](Images\GenerateOverrides.png) 
+![Generate override](Images/GenerateOverrides.png) 
 
 Now you could write ``Console.Write("Hello")`` in this method and run it. To do it check **Debug** section.
 
-![Generate override](Images\HelloWorld.png) 
+![Generate override](Images/HelloWorld.png) 
 ```c#
     [Cmdlet(VerbsCommon.Get, "AssignedItems")]
     public class TimeTrackingCmdlet : PSCmdlet.PSCmdletPT
@@ -62,7 +62,7 @@ Now you could write ``Console.Write("Hello")`` in this method and run it. To do 
 
 Next step is creating commands. The best way to have it organized is to create new Commands directory and put all command there. 
 
-![Commands in solution](Images\CommandsInSolution.png)
+![Commands in solution](Images/CommandsInSolution.png)
 
 Each command should deliver from **PSCmdlet.PSCommandPT<T>**. Generic T should be type of Cmdlet so in described case: **TimeTrackingCmdlet**. Additionally command should implement abstract PSCmdletPT abstract methods.
 
@@ -151,7 +151,7 @@ And for the command line parameters something similar to:
 -noexit -command "-noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\bin\Debug\netstandard2.0\publish\ProductivityTools.AzureDevOps.TimeTracking.dll"
 ```
 
-![Debug properties](Images\DebugProperties.png)
+![Debug properties](Images/DebugProperties.png)
 
 
 
