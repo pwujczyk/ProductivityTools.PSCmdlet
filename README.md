@@ -44,8 +44,7 @@ Generate ProcessRecord override. This method called when we are invoking the Cmd
 ![Generate override](Images/GenerateOverrides.png) 
 
 Now you could write ``Console.Write("Hello")`` in this method and run it. To do it check **Debug** section.
-
-![Generate override](Images/HelloWorld.png) 
+ 
 ```c#
     [Cmdlet(VerbsCommon.Get, "AssignedItems")]
     public class TimeTrackingCmdlet : PSCmdlet.PSCmdletPT
@@ -108,29 +107,77 @@ Each command should deliver from **PSCmdlet.PSCommandPT<T>**. Generic T should b
 
 If you would like to check how it is working check **debug** section.
 
+## More advanced conditions
+If we would like to run command only when chosen parameters will be provided we should reflect it in the Condition property.
+
+First add parameter to the Cmdlet:
+
+```c#
+    [Cmdlet(VerbsCommon.Get, "AssignedItems")]
+    public class TimeTrackingCmdlet : PSCmdlet.PSCmdletPT
+    {
+        public string Name { get; set; }
+
+        public TimeTrackingCmdlet()
+        {
+            base.AddCommand(new TimeTrackingCommandAll(this));
+        }
+
+        protected override void ProcessRecord()
+        {
+            base.ProcessCommands();
+            base.ProcessRecord();
+        }
+    }
+```
+
+And next use it in the command:
+
+```c#
+    public class TimeTrackingCommandAll : PSCmdlet.PSCommandPT<TimeTrackingCmdlet>
+    {
+        public TimeTrackingCommandAll(TimeTrackingCmdlet cmdletType) : base(cmdletType)
+        {
+        }
+
+        protected override bool Condition => string.IsNullOrEmpty(base.Cmdlet.Name);
+
+        protected override void Invoke()
+        {
+            Console.WriteLine("Hello from TimeTrackingCommandAll");
+        }
+    }
+```
 
 
 ## Help
-Module by default adds Help parameter which writes content of the Parameter and Cmdlet attribute.
+Module by default adds Help parameter which displays on the screen description of the cmdlet and **HelpMessage** from the parameters.
 
 ```c#
-[Cmdlet(VerbsCommon.Get, "MasterConfiguration")]
-public class GetMasterConfiguration :PSCmdlet.PSCmdletPT
-{
-     [Parameter(HelpMessage ="It prints whole configuration")]
-     SwitchParameter All { get; set; }
+    [Cmdlet(VerbsCommon.Get, "AssignedItems")]
+    [Description("This is module used to help track time")]
+    public class TimeTrackingCmdlet : PSCmdlet.PSCmdletPT
+    {
+        [Parameter(HelpMessage = "This is name")]
+        public string Name { get; set; }
 
-     public GetMasterConfiguration()
-     {
-         this.AddCommand(new GetConfiguration(this));
-     }
+        public TimeTrackingCmdlet()
+        {
+            base.AddCommand(new TimeTrackingCommandAll(this));
+        }
 
-     protected override void ProcessRecord()
-     {
-        base.ProcessCommands();
-     }
-}
+        protected override void ProcessRecord()
+        {
+            base.ProcessCommands();
+            base.ProcessRecord();
+        }
+    }
 ```
+
+Invoke module with **Help** switch
+
+![Help switch](Images/HelpMethod.png)
+
 
 
 ## Debugging

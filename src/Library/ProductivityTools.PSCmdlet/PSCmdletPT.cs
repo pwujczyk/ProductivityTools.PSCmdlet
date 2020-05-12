@@ -52,7 +52,7 @@ namespace ProductivityTools.PSCmdlet
             string line = s.Name;
             if (!string.IsNullOrEmpty(description))
             {
-                line += $"[- {description}]";
+                line += $"- {description}";
             }
             WriteOutput(line);
         }
