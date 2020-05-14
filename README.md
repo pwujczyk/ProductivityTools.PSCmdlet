@@ -182,20 +182,34 @@ Invoke module with **Help** switch
 
 ## Debugging
 
-To be able to debug application first we need to publish our project. This is because by default VS doesn't copy all references to bin directory.
-
-Invoke in the Package Manager ``dotnet publish``
-
-In the project properties in the Start external program put:
+VS by default doesn't copy the referenced packages to bin directory, but we need them to be able to debug application. To make it possible add ``CopyLocalLockFileAssemblies`` node to the project csproj file.
 
 ```
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <UserSecretsId>4dbd570d-5934-4d10-8bee-114f59f3a0a9</UserSecretsId>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ProductivityTools.PSCmdlet" Version="1.0.1" />
+  </ItemGroup>
+</Project>
+
 ```
+Next in the debug window add PowerShell path to be run when debbuging.
+
+```
+C:\Program Files\PowerShell\7\pwsh.exe
+```
+Or if you using .NETFramework ``C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe``
 
 And for the command line parameters something similar to:
 
 ```
--noexit -command "-noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\bin\Debug\netstandard2.0\publish\ProductivityTools.AzureDevOps.TimeTracking.dll"
+-noexit -command "-noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\bin\Debug\netstandard2.0\ProductivityTools.AzureDevOps.TimeTracking.dll"
 ```
 
 ![Debug properties](Images/DebugProperties.png)
