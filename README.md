@@ -84,13 +84,18 @@ Each command should deliver from **PSCmdlet.PSCommandPT<T>**. Generic T should b
     }
  ```
 
- Next commands should be used in PSCmdlet and use it:
+ Next commands should be used in PSCmdlet and use it. Avoid adding command in the constructor, as the constructor is called every time we are trying to do something with the command. For example when you type command into PowerShell and hit Tab for autocomplete, Cmdlet is created (constructor is called). If commands are heavy it could take a while.
 
 ```c#
     [Cmdlet(VerbsCommon.Get, "AssignedItems")]
     public class TimeTrackingCmdlet : PSCmdlet.PSCmdletPT
     {
         public TimeTrackingCmdlet()
+        {
+            
+        }
+
+        protected override void BeginProcessing()
         {
             base.AddCommand(new TimeTrackingCommandAll(this));
         }
@@ -209,7 +214,7 @@ Or if you using .NETFramework ``C:\Windows\System32\WindowsPowerShell\v1.0\power
 And for the command line parameters something similar to:
 
 ```
--noexit -command "-noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\bin\Debug\netstandard2.0\ProductivityTools.AzureDevOps.TimeTracking.dll"
+-noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\bin\Debug\netstandard2.0\ProductivityTools.AzureDevOps.TimeTracking.dll"
 ```
 
 ![Debug properties](Images/DebugProperties.png)
@@ -217,7 +222,5 @@ And for the command line parameters something similar to:
 
 
 Then after running project using F5, new PowerShell window will show up, thanks to application arguments, module will be imported and you will be able to use the command defined in ``cmdlet`` attribute.
-
-This of course need from you make ``dotnet publish`` always before debugging. 
 
 ![Command invoke](Images/GetAssignedItemsFirst.png)
