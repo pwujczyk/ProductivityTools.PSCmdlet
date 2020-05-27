@@ -25,7 +25,7 @@ When starting Cmdlet at first code is nice and clean one method which make one t
  - Create new .NET Standard library
  - Add reference to **ProductivityTools.PSCmdlet**
  - Deliver from from **PSCmdlet.PSCmdletPT**
- - Add CmdletAttribute with module command **[Cmdlet(VerbsCommon.Get, "AssignedItems")]**
+ - Add **CmdletAttribute**
 
  Class name is not important. Value in the **Cmdlet** attribute will be used to invoke module from PowerShell (in our case Get-AssignedItems)
 
@@ -189,32 +189,32 @@ Invoke module with **Help** switch
 
 VS by default doesn't copy the referenced packages to bin directory, but we need them to be able to debug application. To make it possible add ``CopyLocalLockFileAssemblies`` node to the project csproj file.
 
-```
+```c#
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <UserSecretsId>4dbd570d-5934-4d10-8bee-114f59f3a0a9</UserSecretsId>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="ProductivityTools.PSCmdlet" Version="1.0.1" />
   </ItemGroup>
 </Project>
 
 ```
-Next in the debug window add PowerShell path to be run when debbuging.
+Next in the debug window add PowerShell path to be run when debugging.
 
-```
+```c#
 C:\Program Files\PowerShell\7\pwsh.exe
 ```
 Or if you using .NETFramework ``C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe``
 
 And for the command line parameters something similar to:
 
-```
--noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\bin\Debug\netstandard2.0\ProductivityTools.AzureDevOps.TimeTracking.dll"
+```c#
+-noexit -command "import-module D:\GitHub\ProductivityTools.AzureDevOps.
+TimeTracking\ProductivityTools.AzureDevOps.TimeTracking\
+bin\Debug\netstandard2.0\ProductivityTools.AzureDevOps.TimeTracking.dll"
 ```
 
 ![Debug properties](Images/DebugProperties.png)
