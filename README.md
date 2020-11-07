@@ -41,6 +41,7 @@ public class TimeTrackingCmdlet :PSCmdlet.PSCmdletPT
 
 Generate ProcessRecord override. This method called when we are invoking the Cmdlet
 
+<!--og-image-->
 ![Generate override](Images/GenerateOverrides.png) 
 
 Now you could write ``Console.Write("Hello")`` in this method and run it. To do it check **Debug** section.
