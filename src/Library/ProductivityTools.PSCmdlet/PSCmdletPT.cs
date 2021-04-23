@@ -18,6 +18,15 @@ namespace ProductivityTools.PSCmdlet
 
         public Action<string> WriteOutput { get; set; } = (s) => Console.WriteLine(s);
 
+        public bool VerboseSwitch
+        {
+            get
+            {
+                var r = this.MyInvocation.BoundParameters.ContainsKey("Verbose");
+                return r;
+            }
+        }
+
         protected void AddCommand(PSCommandPT command)
         {
             this.CommandList.Add(command);
