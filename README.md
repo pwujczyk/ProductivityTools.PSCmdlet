@@ -154,7 +154,11 @@ And next use it in the command:
         }
     }
 ```
+## Passing data from one command to another
 
+If you would like to pass some data from one command to another you need to create variable on the Cmdlet level.
+
+Lets assume your cmdlet is **Get-Purchases** it is managed by command **Get**. You would like to add a switch **SendToSomeWhere** and you would like to pass data gathered in the command **Get**. Than you need to create public variable on the **Get-Purchase** level and use it in both commands.
 
 ## Help
 Module by default adds Help parameter which displays on the screen description of the cmdlet and **HelpMessage** from the parameters.
